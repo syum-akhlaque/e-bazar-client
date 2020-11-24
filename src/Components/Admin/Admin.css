@@ -1,0 +1,16 @@
+#addProduct , #makeAdmin{
+    display: none;
+}
+.select{
+    color: yellowgreen
+}
+.light-border{
+   border:1px solid lightblue;
+   border-radius: 14px;
+}
+.add-products button:active{
+    background:#EF0031 !important;
+}
+.add-products button:focus{
+    background:#EF0031 !important;
+}

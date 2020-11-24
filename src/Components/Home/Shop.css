@@ -1,0 +1,33 @@
+.shop-card h5{
+    font-size: 18px;
+    color: #2B2B2B;
+}
+.shop-card h6{
+    font-size: 17px;
+    color: #2B2B2B;
+}
+.card img, .card{
+    border-radius: 8px;
+}
+.card-body {
+    padding: 10px 10px 5px 10px;
+}
+.card button{
+    transition: .5s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+}
+
+.overlay {
+    opacity: 0;
+  }
+.card:hover .card-body{
+    opacity: 0;  
+    transition: .5s ease;
+}
+.card:hover .overlay {
+    opacity: 1;  
+  }

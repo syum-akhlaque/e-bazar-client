@@ -1,0 +1,14 @@
+.search-bar {
+    padding: 5px 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border-bottom: 1px solid #ECECEC;
+    width: 500px;
+   
+}
+.search-bar input {
+    border: none;
+}
+.search-bar input:focus {
+    outline: none !important;
+}
