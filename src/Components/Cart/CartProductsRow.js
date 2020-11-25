@@ -5,12 +5,12 @@ import img from '../Images/realme.jpg'
 
 
 const CartProductsRow = (props) => {
-    let {name , price, image, color, size,shippingCharge, _id,quantity} = props.products;
+    let {name , price, image, color, size,shippingCharge, _id,quantity,discount} = props.products;
     const handleRemoveCartItem= props.handleRemoveCartItem;
     const handleCartQuantity= props.handleCartQuantity;
-      
+    const discountPrice = parseInt(price) - parseInt(price)* parseInt(discount)/100;
     
-    const titalPrice = parseInt(price)* parseInt(quantity)
+    const titalPrice = parseInt(discountPrice)* parseInt(quantity)
 
     return (
         <tr>
@@ -19,7 +19,7 @@ const CartProductsRow = (props) => {
             <p>{name}</p>
             <p>              
                 color: {color} &nbsp;  &nbsp; size: {size} <br/>
-                product price: BDT. {price}  
+                product price: BDT. {discountPrice}  
             </p>
         </td>
         <td>

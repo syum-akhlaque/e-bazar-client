@@ -1,30 +1,28 @@
 import React from 'react';
-import './Shop.css'
+import '../Home/Shop.css'
 
-const ProductCards = (props) => {
+const ProductCards2 = (props) => {
     const {name , price, discount, image, activeStatus} = props.products;
     const handleUpdateCart= props.handleUpdateCart;
-    const discountPrice = parseInt(price)- (parseInt(price)* parseInt(discount))/100;
-  
 
     return (
-        (activeStatus==='yes')&&  // check active status is ok?
-        <div className="col p-2" >
+        // (activeStatus==='yes')&&  // for admin product page innored active status 
+        <div className="col-md-3 p-2" > 
           <div className="card" >
               <div className="card-body" >
-              <img className='card-img-top' src={"data:image/png;base64," + image.img} alt='img'/>
+              <img className='card-img-top' src={"data:image/png;base64," + image.img} alt='imgd'/>
                   <p className="card-title pt-1 ">{name}</p>
                   <span className='d-flex pt-2 '>
-                      <h5>BDT. {discountPrice}</h5>
+                      <h5>BDT. {price}</h5>
                       <h6 className='ml-auto bg-warning'>{discount}</h6>
                   </span>
                </div>
                <div className="overlay">
-                <button className="btn btn-warning" onClick={()=>handleUpdateCart(props.products)}>Add to Cart </button>
+                <button className="btn btn-warning" >Edit </button>
              </div>     
           </div>        
          </div>
     );
 };
 
-export default ProductCards;
+export default ProductCards2;

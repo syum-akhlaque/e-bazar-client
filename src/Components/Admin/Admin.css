@@ -1,5 +1,11 @@
-#addProduct , #makeAdmin{
+#addProduct , #makeAdmin, #allProduct{
     display: none;
+}
+#cencel,#pending,#confirm{
+    background-color: white;
+}
+#all{
+    background-color: #FFF700;
 }
 .select{
     color: yellowgreen

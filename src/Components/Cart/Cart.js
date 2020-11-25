@@ -4,6 +4,7 @@ import CartProducts from './CartProducts';
 import OrderSummary from './OrderSummary';
 
 const Cart = () => {
+   
     return (
         <div className='container'>
            <Link to='/'> <button className= 'btn btn-light mt-5'>Go back</button></Link>
@@ -12,7 +13,7 @@ const Cart = () => {
                     <CartProducts/>
                 </div>
                 <div className="col-md-3 bg-light">
-                    <OrderSummary/>
+                    <OrderSummary ></OrderSummary>
                 </div>
             </div>
         </div>

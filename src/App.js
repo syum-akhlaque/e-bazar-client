@@ -8,15 +8,21 @@ import Home from './Components/Home/Home';
 import Cart from './Components/Cart/Cart';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/Login/Login';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import AdminLogin from './Components/Login/AdminLogin';
+import AllOrder from './Components/Admin/Order/AllOrder';
 export const userContext = createContext();
+export const adminContext = createContext();
 export const cartContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
+  const [loggedInAdmin, setLoggedInAdmin] = useState({});
   const [cart, setCart] = useState([]);
   return (
     <userContext.Provider value = {[loggedInUser,setLoggedInUser]} >
     <cartContext.Provider value = {[cart,setCart]} >
+    <adminContext.Provider value = {[loggedInAdmin, setLoggedInAdmin]}>
     <Router>
       <Switch>
         <Route exact path="/">
@@ -31,12 +37,20 @@ function App() {
           <Cart></Cart>
         </Route>
 
-        <Route exact path="/dashboard">
+        <PrivateRoute exact path="/dashboard">
           <Dashboard></Dashboard>
-        </Route>
+        </PrivateRoute>
 
         <Route exact path="/login">
           <Login></Login>
+        </Route>
+
+        <Route exact path="/test">
+          <AllOrder></AllOrder>
+        </Route>
+
+        <Route exact path="/adminlogin">
+          <AdminLogin></AdminLogin>
         </Route>
 
         <Route path='*'>
@@ -44,6 +58,7 @@ function App() {
         </Route>
     </Switch>
  </Router>
+ </adminContext.Provider>
  </cartContext.Provider>
  </userContext.Provider>
   );

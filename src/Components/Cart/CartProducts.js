@@ -11,9 +11,24 @@ const CartProducts = () => {
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = (data,e) => {
-        setCart([]);
+        const order = { // this order data send to database
+            orderNumber : '12345',
+            status: 'pending',
+            itemPrice: 1000
+            }
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(order)
+        };
+      
+        fetch('http://localhost:5000/addNewOrder', requestOptions) // fetch req for add new org 
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+        setCart([]); //refresh cart
         alert("Your order placed successfully.click ok to go Admin Panel")
-        history.push({
+        history.push({ 
             pathname: '/dashboard',
             })
     }
@@ -21,12 +36,10 @@ const CartProducts = () => {
     
     const handleRemoveCartItem = (id)=>{  // remove a item from cart
         const newCart = cart.filter( pd => pd._id !== id);  
-         setCart(newCart);
-         console.log(newCart);  
+         setCart(newCart); 
     }
 
     const handleCartQuantity = (operation, id)=>{
-        console.log(operation, id)
         const currentItemNumber = cart.find( pd => pd._id === id); //to check current item number
         const index = cart.findIndex(x => x._id ===id);
         if(operation==='increase'){
@@ -34,7 +47,6 @@ const CartProducts = () => {
             const updatableProduct = cart[index];
             updatableProduct.quantity= updatableProduct.quantity+1;
             setCart(newcart);
-            console.log(updatableProduct);
         }
         else{
             if(currentItemNumber.quantity>1){
@@ -42,17 +54,16 @@ const CartProducts = () => {
                 const updatableProduct = cart[index];
                 updatableProduct.quantity= updatableProduct.quantity-1;
                 setCart(newcart);
-                console.log(updatableProduct);
             }
         }  
     }
    
     return (
-        <div className = ''>
+        <div >
         <table className="table bg-white " id = ''> {/*------------------- List of all orders of customer */}
             <tbody> 
                 {
-                    cart.map( products => <CartProductsRow key= {products._id}  products={products} handleRemoveCartItem={handleRemoveCartItem} handleCartQuantity={handleCartQuantity} > </CartProductsRow>).reverse()
+                    cart.map( products => <CartProductsRow key= {products._id}  products={products} handleRemoveCartItem={handleRemoveCartItem} handleCartQuantity={handleCartQuantity} > </CartProductsRow>)
                 }   
             </tbody>    
         </table>

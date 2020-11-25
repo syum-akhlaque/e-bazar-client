@@ -41,6 +41,7 @@ const AddProducts = () => {
             console.error(error)
             console.log('not send')
         })
+        alert('Product Added Successfully')
         e.target.reset();
     }
     return (
