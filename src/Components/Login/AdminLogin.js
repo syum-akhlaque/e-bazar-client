@@ -14,18 +14,17 @@ const AdminLogin = () => {
     let { from } = location.state || { from: { pathname: "/dashboard" } };
 
     const onSubmit = (data,e) => {
-        console.log(data)
         e.preventDefault();
+        if(data.userId === 'admin' &&  (data.password === '123456')) {
         const newUSer = {
             isLoggedin: true,
             userId: data.userId,
             password: data.password
         }
         setLoggedInAdmin(newUSer);
-        console.log('hello');
-        console.log(loggedInAdmin);
         e.target.reset();
         history.replace(from);
+    }
             
     }
     return (
@@ -49,6 +48,14 @@ const AdminLogin = () => {
                 </div>
              </form>
             </div>   
+
+            <div className="col-md-4 offset-md-4 px-5 ">
+                <div className='bg-white  p-5'>   
+                    <p><b>Use the following credentials to login</b></p>
+                    <p><b>User Id:</b> <br/>admin </p>
+                    <p><b>Password:</b> <br/> 123456 </p>
+                </div>
+            </div>  
         </div>
     );
 };

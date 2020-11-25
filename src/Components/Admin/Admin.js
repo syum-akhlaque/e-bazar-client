@@ -3,6 +3,7 @@ import Sidebar from './Sidebar';
 import './Admin.css'
 import Products from './Products/Products';
 import AllOrder from './Order/AllOrder';
+import Promotions from './Promotions/Promotions';
 
 
 const Admin = () => {
@@ -14,14 +15,19 @@ const Admin = () => {
             <Sidebar></Sidebar>
         </div>
 
-        {/* ------------------------------------------All Servic List --------------------------------------------- */}
+        {/* ------------------------------------------ Order --------------------------------------------- */}
         <div id='allOrder'className = 'col-md-10' style={{background:'#E5E5E5' }}>
             <AllOrder></AllOrder>
         </div>
 
-         {/* ------------------------------------------Order Form----------------------------------------------- */}
+         {/* ------------------------------------------ Product  ----------------------------------------------- */}
          <div id='Products'className = 'col-md-10' style={{background:'#E5E5E5'}}>
             <Products ></Products>
+        </div>
+
+          {/* ------------------------------------------ Promotions  ----------------------------------------------- */}
+          <div id='promotions'className = 'col-md-10' style={{background:'#E5E5E5'}}>
+            <Promotions ></Promotions>
         </div>
 
     </div>

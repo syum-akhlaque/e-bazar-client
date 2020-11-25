@@ -1,14 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
 import { cartContext, userContext } from '../../App';
-import promocodes from '../FakeData/Promocodes';
+// import promocodes from '../FakeData/Promocodes';
 
 const OrderSummary = () => {
     const { register, handleSubmit, errors } = useForm();
     const [cart] = useContext(cartContext);
     const [loggedInUser, setLoggedInUser] = useContext(userContext)
     const history = useHistory()
+    //----------------calculate cart price
     let subTotal = 0;
     let shippingCharge= 0;
     let [discount,setDiscount] = useState(0);
@@ -18,14 +19,31 @@ const OrderSummary = () => {
         subTotal = subTotal + discountPrice * parseInt(product.quantity);
         shippingCharge = shippingCharge + parseInt(product.shippingCharge) * parseInt(product.quantity)     
     }
+    let totalPayable = subTotal - discount+ shippingCharge
 
+    //----------------------get promocodes-------------------
+    const [promoCodes ,setPromocodes] = useState([]);
+    const requestOptions = {
+    method: 'GET',
+    headers: { 
+        'Content-Type': 'application/json',
+    }
+    }
+    useEffect(() => {
+    fetch('http://localhost:5000/getPromocodes',requestOptions) 
+        .then(response => response.json())
+        .then(data => setPromocodes(data)); 
+    }, []);
+
+    //----------- check promocode validity and add discount --------------------
     const onSubmit = (data,e) => {
 
         if(loggedInUser.isLoggedin === true){
             e.preventDefault();
-            const chackValidity = promocodes.find(x => x.promo === data.code)
-            if(chackValidity){
-                const discountPercentage = parseInt(chackValidity.percentage);
+            const chackValidCode = promoCodes.find(x => x.promoCodes === data.code)
+
+            if(chackValidCode && chackValidCode.activeStatus==='yes' ){
+                const discountPercentage = parseInt(chackValidCode.discountRate);
                 discount = subTotal*discountPercentage/100
                 setDiscount(discount);
                 e.target.reset();
@@ -34,6 +52,7 @@ const OrderSummary = () => {
             else{
                 document.getElementById('promoError').innerHTML='promo code invalid or expired'
             } 
+                 
         }
         else{
             history.push({
@@ -41,7 +60,7 @@ const OrderSummary = () => {
             })
         }
     }
-    let totalPayable = subTotal - discount+ shippingCharge
+   
   
     return (
         <div className='bg-white p-2'>

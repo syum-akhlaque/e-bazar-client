@@ -8,7 +8,7 @@ import './NavigationBar.css'
 
 const NavigationBar = () => {
     const [loggedInUser] = useContext(userContext);
-    const [cart,setCart] = useContext(cartContext);
+    const [cart] = useContext(cartContext);
     const location = useLocation();
     const currentPath = location.pathname;
   
@@ -33,7 +33,7 @@ const NavigationBar = () => {
                 {
                      (currentPath === "/dashboard") &&
                      <>
-                         <li className="pt-2">  <b>{loggedInUser.name}</b> </li>
+                         <li className="pt-2 ml-auto">  <b>User Name</b> </li>
                      </>
                 }
              </Nav>  

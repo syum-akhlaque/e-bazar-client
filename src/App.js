@@ -4,12 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router, Switch,Route
 } from "react-router-dom";
-import Home from './Components/Home/Home';
-import Cart from './Components/Cart/Cart';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Login from './Components/Login/Login';
+
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
-import AdminLogin from './Components/Login/AdminLogin';
+import Home from './Pages/Home,js/Home';
+import Cart from './Pages/Cart/Cart';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import UserLogin from './Pages/Login/UserLogin/UserLogin';
+import AdminLogin from './Pages/Login/AdminLogin/AdminLogin';
 export const userContext = createContext();
 export const adminContext = createContext();
 export const cartContext = createContext();
@@ -41,7 +42,7 @@ function App() {
         </PrivateRoute>
 
         <Route exact path="/login">
-          <Login></Login>
+          <UserLogin></UserLogin>
         </Route>
 
         <Route exact path="/adminlogin">

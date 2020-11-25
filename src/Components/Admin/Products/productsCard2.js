@@ -17,7 +17,7 @@ const ProductCards2 = (props) => {
                   </span>
                </div>
                <div className="overlay">
-                <button className="btn btn-warning" >Edit </button>
+                <button className="btn btn-warning" > Under Construction </button>
              </div>     
           </div>        
          </div>
