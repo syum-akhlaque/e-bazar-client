@@ -10,7 +10,6 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import AdminLogin from './Components/Login/AdminLogin';
-import AllOrder from './Components/Admin/Order/AllOrder';
 export const userContext = createContext();
 export const adminContext = createContext();
 export const cartContext = createContext();
@@ -43,10 +42,6 @@ function App() {
 
         <Route exact path="/login">
           <Login></Login>
-        </Route>
-
-        <Route exact path="/test">
-          <AllOrder></AllOrder>
         </Route>
 
         <Route exact path="/adminlogin">

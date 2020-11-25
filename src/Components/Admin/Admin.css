@@ -1,6 +1,9 @@
-#addProduct , #makeAdmin, #allProduct{
+#Products{
     display: none;
 }
+/* #add-Products, #all-Products{
+    display: none !important;
+} */
 #cencel,#pending,#confirm{
     background-color: white;
 }

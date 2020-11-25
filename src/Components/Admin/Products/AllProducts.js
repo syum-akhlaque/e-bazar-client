@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProductCards2 from './productsCard2';
 
-const Products = () => {
+const AllProducts = () => {
     const [products ,setProducts] = useState([]);
        // eslint-disable-next-line react-hooks/exhaustive-deps
    const requestOptions = {
@@ -17,10 +17,9 @@ const Products = () => {
     }, [products,requestOptions]);
 
     const displayAddProduct = () => {
-        document.getElementById('makeAdmin').style.display = 'none';
-        document.getElementById('allService').style.display = 'none';
-        document.getElementById('addProduct').style.display = 'block'; 
-        document.getElementById('allProduct').style.display = 'none';  
+        
+        document.getElementById('add-Products').style.display = 'block'; 
+        document.getElementById('all-Products').style.display = 'none';  
     }
 
     return (
@@ -37,4 +36,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default AllProducts;

@@ -1,9 +1,7 @@
 import React from 'react';
-import MakeAdmin from './MakeAdmin';
 import Sidebar from './Sidebar';
 import './Admin.css'
-import AddProducts from './AddProducts';
-import Products from './Products';
+import Products from './Products/Products';
 import AllOrder from './Order/AllOrder';
 
 
@@ -17,22 +15,12 @@ const Admin = () => {
         </div>
 
         {/* ------------------------------------------All Servic List --------------------------------------------- */}
-        <div id='allService'className = 'col-md-10' style={{background:'#E5E5E5' }}>
+        <div id='allOrder'className = 'col-md-10' style={{background:'#E5E5E5' }}>
             <AllOrder></AllOrder>
         </div>
 
-        {/* -----------------------------------------Review -------------------------------------------------- */}
-        <div id='addProduct'className = 'col-md-10' style={{background:'#E5E5E5'}}>
-            <AddProducts></AddProducts>
-        </div>
-
          {/* ------------------------------------------Order Form----------------------------------------------- */}
-         <div id='makeAdmin'className = 'col-md-10' style={{background:'#E5E5E5'}}>
-            <MakeAdmin ></MakeAdmin>
-        </div>
-
-         {/* ------------------------------------------Order Form----------------------------------------------- */}
-         <div id='allProduct'className = 'col-md-10' style={{background:'#E5E5E5'}}>
+         <div id='Products'className = 'col-md-10' style={{background:'#E5E5E5'}}>
             <Products ></Products>
         </div>
 

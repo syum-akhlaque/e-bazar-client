@@ -1,10 +1,9 @@
 import React from 'react';
-import '../Home/Shop.css'
+import '../../Home/Shop.css'
 
 const ProductCards2 = (props) => {
     const {name , price, discount, image, activeStatus} = props.products;
-    const handleUpdateCart= props.handleUpdateCart;
-
+    
     return (
         // (activeStatus==='yes')&&  // for admin product page innored active status 
         <div className="col-md-3 p-2" > 
