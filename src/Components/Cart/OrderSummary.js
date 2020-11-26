@@ -90,6 +90,14 @@ const OrderSummary = () => {
             <div className="d-flex mt-2">
                 Total Payable <span className= 'ml-auto'>{totalPayable}</span>
             </div>
+
+            <div className='mt-5 p-3 bg-light text-danger'>
+              <p>NOTE: <br/>
+                # please add promocode before checkout: FREE10,FREE20 <br/>
+                # Use promo code again if you dont see discount added <br/>
+               # Please use promocode if you change something from cart <br/>
+               </p>
+           </div>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  faLock, faPlus,faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import {  faPlus, faShoppingBag, faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 import './Admin.css'
 
 const Sidebar = () => {
@@ -42,12 +42,12 @@ const Sidebar = () => {
             <div>
               <p onClick={displayPromotions} className ='pt-3 pl-4'><FontAwesomeIcon icon={faPlus} /> Promotions</p>
                     <span id='promotionsSubmenu'>
-                        <span onClick={displayPromoCodes} className ='pl-5'>Promo Codes</span> <br/>
-                        <span onClick={displayAddPromoCodes} className ='pl-5'>Add Promo Codes</span>
+                        <span onClick={displayPromoCodes} className ='pl-5 span1'>Promo Codes</span> <br/>
+                        <span onClick={displayAddPromoCodes} className ='pl-5 span2'>Add Promo Codes</span>
                     </span>
             </div>
-            <p onClick={displayALLOrderList} className ='pl-4 mt-2'> <FontAwesomeIcon icon={faLock} /> Order</p>
-            <p onClick={displayProducts} className ='pl-4' > Products</p>
+            <p onClick={displayALLOrderList} className ='pl-4 mt-2'> <FontAwesomeIcon icon={faShoppingBag} /> Order</p>
+            <p onClick={displayProducts} className ='pl-4' ><FontAwesomeIcon icon={faShoppingBasket} /> Products</p>
         </>
     );
 };

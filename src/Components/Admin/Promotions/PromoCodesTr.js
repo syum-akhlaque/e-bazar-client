@@ -2,13 +2,14 @@ import React from 'react';
 import '../Admin.css'
 
 const PromoCodesTr = (props) => {
-    const { activeStatus,promoCodes,startDate,endDate,discountRate, useTime} = props.orders;
+    const { _id,activeStatus,promoCodes,startDate,endDate,discountRate, useTime} = props.orders;
+    const handleUpdatePromoCode = props.handleUpdatePromoCode
   
     return (
         <>
         <tr className='bg-white'>
            <td className="py-4" colspan="3">{promoCodes}</td>
-           <td> <button className="btn btn-warning px-5">Edit</button></td>
+           <td> <button onClick={()=>handleUpdatePromoCode(_id, useTime, endDate, discountRate,activeStatus )} className="btn btn-warning px-5">Edit</button></td>
            <td>
                {
                    (activeStatus === 'yes') ?  //---------check promotion active status-------------
