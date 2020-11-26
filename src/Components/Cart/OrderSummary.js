@@ -45,14 +45,18 @@ const OrderSummary = () => {
             if(chackValidCode && chackValidCode.activeStatus==='yes' ){  // acheck is promo code is active and its validity
                 
                 const currentDate = new Date() 
+                const startDate = new Date(chackValidCode.fullStartDate)
                 const endDate = new Date(chackValidCode.fullEndDate)
 
-                if(endDate>currentDate){
+                if(endDate>currentDate && startDate<currentDate){
                     const discountPercentage = parseInt(chackValidCode.discountRate);
                     discount = subTotal*discountPercentage/100
                     setDiscount(discount);
                     e.target.reset();
                     document.getElementById('promoError').innerHTML='' // remove error message
+                 }
+                 else if(startDate>currentDate){
+                    document.getElementById('promoError').innerHTML='promo code will available soon, please wait'
                  }
                  else{
                     document.getElementById('promoError').innerHTML='promo code is expired'
