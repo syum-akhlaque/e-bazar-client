@@ -11,7 +11,7 @@ const AllProducts = () => {
     }
   }
     useEffect(() => {
-    fetch('http://localhost:5000/allProducts',requestOptions) 
+    fetch('https://gentle-crag-19557.herokuapp.com/allProducts',requestOptions) 
         .then(response => response.json())
         .then(data => setProducts(data)); 
     }, [products,requestOptions]);

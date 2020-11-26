@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
-import { cartContext, userContext } from '../../App';
+import { cartContext, SearchContext,  } from '../../App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faSearch, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons'
 import './NavigationBar.css'
 
 const NavigationBar = () => {
-    const [loggedInUser] = useContext(userContext);
     const [cart] = useContext(cartContext);
     const location = useLocation();
     const currentPath = location.pathname;
+    const [search, setSearch] = useContext(SearchContext)
+    const handleSearch = (data)=>{
+        setSearch(data)
+    }
   
     return (
         <div className='container'>
@@ -23,7 +26,8 @@ const NavigationBar = () => {
                  {
                      (currentPath === "/" || currentPath === "/home" || currentPath === '/cart') &&
                      <>
-                        <div className = 'search-bar ml-auto '> <FontAwesomeIcon icon={faSearch} /><input  type="text"  placeholder="Search .."/> </div>
+                        <div className = 'search-bar ml-auto '> <FontAwesomeIcon icon={faSearch} /><input  type="text"  placeholder="Search .." onChange={(event)=>handleSearch(event.target.value)}/> </div>
+
                         <div className='d-flex'>
                             <li className='mx-4'><FontAwesomeIcon icon={faShoppingCart} /> <Link to='/cart' className='bg-warning'> Cart</Link> {cart.length}</li>
                             <li ><FontAwesomeIcon icon={faUser} /></li>

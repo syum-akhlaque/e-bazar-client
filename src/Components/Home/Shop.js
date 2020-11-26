@@ -1,11 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { cartContext } from '../../App';
+import { cartContext, SearchContext } from '../../App';
 import ProductCards from './ProductCards';
 import './Shop.css'
 
 const Shop = () => {
    const [products ,setProducts] = useState([]);
    const [cart,setCart] = useContext(cartContext);
+   const [search] = useContext(SearchContext);
+   useEffect(() => {
+       
+    // fetch('http://localhost:5000/allProductsBySearch?search='+search)   
+   fetch('https://gentle-crag-19557.herokuapp.com/allProductsBySearch?search='+search) 
+        .then(response => response.json())
+        .then(data => setProducts(data)); 
+  }, [search]);
+
 
    const handleUpdateCart = (items)=>{
       const newItem = cart.find( pd => pd._id === items._id);
@@ -16,20 +25,6 @@ const Shop = () => {
       console.log(newCart);
      }
    }
-
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-   const requestOptions = {
-       method: 'GET',
-       headers: { 
-           'Content-Type': 'application/json',
-       }
-     }
-
-   useEffect(() => {
-     fetch('http://localhost:5000/allProducts',requestOptions) 
-         .then(response => response.json())
-         .then(data => setProducts(data)); 
-   }, [products,requestOptions]);
    
     return (
         <section className='bg-light'>

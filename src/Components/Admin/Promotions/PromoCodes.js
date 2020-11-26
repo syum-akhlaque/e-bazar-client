@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PromoCodesTr from './PromoCodesTr';
 import UpdatePromoCodes from './UpdatePromoCodes';
 
@@ -27,7 +26,7 @@ const PromoCodes = () => {
         }
         }
         useEffect(() => {
-        fetch('http://localhost:5000/getPromocodes',requestOptions) 
+        fetch('https://gentle-crag-19557.herokuapp.com/getPromocodes',requestOptions) 
             .then(response => response.json())
             .then(data => setPromocodes(data)); 
         }, [promoCodes]);

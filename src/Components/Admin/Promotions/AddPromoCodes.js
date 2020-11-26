@@ -14,7 +14,13 @@ const AddPromoCodes = () => {
     let [startDate, setStartDate] = useState(new Date());
     let [endDate, setEndDate] = useState(new Date("1/21/2021") ); 
 
-    // console.log(endDate.getDate()+'/'+ (endDate.getMonth() + 1)+'/'+ endDate.getFullYear()  )
+    var compare_dates = function(startDate,endDate){
+      if (startDate>endDate) return ("startDate > endDate");
+      else if (startDate<endDate) return ("endDate > startDate");
+      else return ("startDate = endDate"); 
+     }
+   console.log(compare_dates(startDate, endDate));
+   
 
     const onSubmit = (data,e) => {
         e.preventDefault();
@@ -23,6 +29,8 @@ const AddPromoCodes = () => {
             promoCodes: data.promoCodes.toUpperCase(),
             startDate: startDate.getDate()+'/'+ (startDate.getMonth() + 1)+'/'+ startDate.getFullYear(),
             endDate: endDate.getDate()+'/'+ (endDate.getMonth() + 1)+'/'+ endDate.getFullYear(),
+            fullStartDate: startDate,
+            fullEndDate: endDate,
             discountRate: data.discountRate,
             useTime: data.useTime,
             activeStatus: activeStatus,
@@ -33,7 +41,7 @@ const AddPromoCodes = () => {
             body: JSON.stringify(promoData)
         };
       
-        fetch('http://localhost:5000/addPromoCodes', requestOptions) // fetch req for add new org 
+        fetch('https://gentle-crag-19557.herokuapp.com/addPromoCodes', requestOptions) // fetch req for add new org 
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(err => console.log(err));

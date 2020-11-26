@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { userContext } from '../../../App';
+import React, { useEffect, useState } from 'react';
 import '../Admin.css'
 import AllOrderTR from './AllOrderTR';
 
@@ -42,7 +41,7 @@ const AllOrder = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   
     useEffect(() => { 
-        fetch('http://localhost:5000/orderByStatus?status='+status) 
+        fetch('https://gentle-crag-19557.herokuapp.com/orderByStatus?status='+status) 
            .then(response => response.json())
            .then(data =>  setAllOrders(data)); 
      }, [status]);
@@ -59,9 +58,9 @@ const AllOrder = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatableValues)
           }
-        fetch('http://localhost:5000/updateStatus',updateOptions)  
+        fetch('https://gentle-crag-19557.herokuapp.com/updateStatus',updateOptions)  
         .then(
-            fetch('http://localhost:5000/orderByStatus?status='+status) // 
+            fetch('https://gentle-crag-19557.herokuapp.com/orderByStatus?status='+status) // 
             .then(response => response.json())
             .then(data =>  setAllOrders(data))
         )

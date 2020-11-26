@@ -14,15 +14,20 @@ import AdminLogin from './Pages/Login/AdminLogin/AdminLogin';
 export const userContext = createContext();
 export const adminContext = createContext();
 export const cartContext = createContext();
+export const SearchContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [loggedInAdmin, setLoggedInAdmin] = useState({});
   const [cart, setCart] = useState([]);
+  const [search, setSearch] = useState('')
   return (
+
+    <SearchContext.Provider value = {[search,setSearch]}>
     <userContext.Provider value = {[loggedInUser,setLoggedInUser]} >
     <cartContext.Provider value = {[cart,setCart]} >
     <adminContext.Provider value = {[loggedInAdmin, setLoggedInAdmin]}>
+
     <Router>
       <Switch>
         <Route exact path="/">
@@ -54,9 +59,11 @@ function App() {
         </Route>
     </Switch>
  </Router>
+ 
  </adminContext.Provider>
  </cartContext.Provider>
  </userContext.Provider>
+ </SearchContext.Provider>
   );
 }
 

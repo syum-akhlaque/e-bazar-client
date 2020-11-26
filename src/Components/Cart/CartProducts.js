@@ -22,7 +22,7 @@ const CartProducts = () => {
             body: JSON.stringify(order)
         };
       
-        fetch('http://localhost:5000/addNewOrder', requestOptions) // fetch req for add new org 
+        fetch('https://gentle-crag-19557.herokuapp.com/addNewOrder', requestOptions) // fetch req for add new org 
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(err => console.log(err));

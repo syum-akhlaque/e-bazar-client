@@ -5,9 +5,9 @@ import { cartContext, userContext } from '../../App';
 // import promocodes from '../FakeData/Promocodes';
 
 const OrderSummary = () => {
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit } = useForm();
     const [cart] = useContext(cartContext);
-    const [loggedInUser, setLoggedInUser] = useContext(userContext)
+    const [loggedInUser] = useContext(userContext)
     const history = useHistory()
     //----------------calculate cart price
     let subTotal = 0;
@@ -30,10 +30,10 @@ const OrderSummary = () => {
     }
     }
     useEffect(() => {
-    fetch('http://localhost:5000/getPromocodes',requestOptions) 
+    fetch('https://gentle-crag-19557.herokuapp.com/getPromocodes',requestOptions) 
         .then(response => response.json())
         .then(data => setPromocodes(data)); 
-    }, []);
+    }, [promoCodes]);
 
     //----------- check promocode validity and add discount --------------------
     const onSubmit = (data,e) => {
@@ -42,7 +42,7 @@ const OrderSummary = () => {
             e.preventDefault();
             const chackValidCode = promoCodes.find(x => x.promoCodes === data.code)
 
-            if(chackValidCode && chackValidCode.activeStatus==='yes' ){
+            if(chackValidCode && chackValidCode.activeStatus==='yes' ){  // acheck is promo code is active and its validity
                 const discountPercentage = parseInt(chackValidCode.discountRate);
                 discount = subTotal*discountPercentage/100
                 setDiscount(discount);
@@ -60,6 +60,7 @@ const OrderSummary = () => {
             })
         }
     }
+   
    
   
     return (

@@ -29,9 +29,9 @@ const UpdatePromoCodes = (props) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatablePromoData)
           }
-        fetch('http://localhost:5000/updatePromoCodes',updateOptions)  
+        fetch('https://gentle-crag-19557.herokuapp.com/updatePromoCodes',updateOptions)  
         .then(
-            // fetch('http://localhost:5000/orderByStatus?status='+status) // 
+            // fetch('https://gentle-crag-19557.herokuapp.com/orderByStatus?status='+status) // 
             // .then(response => response.json())
             // .then(data =>  setAllOrders(data))
         )  

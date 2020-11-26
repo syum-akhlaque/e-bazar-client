@@ -27,15 +27,13 @@ const AddProducts = () => {
         formData.append('size', data.size);
         formData.append('activeStatus', activeStatus);
 
-        fetch('http://localhost:5000/addProducts', {
+        fetch('https://gentle-crag-19557.herokuapp.com/addProducts', {
             method: 'POST',
             body: formData
         })
         .then(res => res.json())
         .then(result => {
-            if(result){
-                alert("Ya Hoo !! Success!")
-            }
+            console.log('success')
         })
         .catch(error => {
             console.error(error)
