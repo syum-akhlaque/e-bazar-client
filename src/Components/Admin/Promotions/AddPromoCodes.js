@@ -13,15 +13,6 @@ const AddPromoCodes = () => {
     }
     let [startDate, setStartDate] = useState(new Date());
     let [endDate, setEndDate] = useState(new Date("1/21/2021") ); 
-
-    var compare_dates = function(startDate,endDate){
-      if (startDate>endDate) return ("startDate > endDate");
-      else if (startDate<endDate) return ("endDate > startDate");
-      else return ("startDate = endDate"); 
-     }
-   console.log(compare_dates(startDate, endDate));
-   
-
     const onSubmit = (data,e) => {
         e.preventDefault();
 

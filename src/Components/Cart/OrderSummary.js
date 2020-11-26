@@ -35,22 +35,31 @@ const OrderSummary = () => {
         .then(data => setPromocodes(data)); 
     }, [promoCodes]);
 
-    //----------- check promocode validity and add discount --------------------
+    //----------- check promocode validity and add discount price --------------------
     const onSubmit = (data,e) => {
 
         if(loggedInUser.isLoggedin === true){
             e.preventDefault();
             const chackValidCode = promoCodes.find(x => x.promoCodes === data.code)
-
+            
             if(chackValidCode && chackValidCode.activeStatus==='yes' ){  // acheck is promo code is active and its validity
-                const discountPercentage = parseInt(chackValidCode.discountRate);
-                discount = subTotal*discountPercentage/100
-                setDiscount(discount);
-                e.target.reset();
-                document.getElementById('promoError').innerHTML='' // remove error message
+                
+                const currentDate = new Date() 
+                const endDate = new Date(chackValidCode.fullEndDate)
+
+                if(endDate>currentDate){
+                    const discountPercentage = parseInt(chackValidCode.discountRate);
+                    discount = subTotal*discountPercentage/100
+                    setDiscount(discount);
+                    e.target.reset();
+                    document.getElementById('promoError').innerHTML='' // remove error message
+                 }
+                 else{
+                    document.getElementById('promoError').innerHTML='promo code is expired'
+                } 
             }
             else{
-                document.getElementById('promoError').innerHTML='promo code invalid or expired'
+                document.getElementById('promoError').innerHTML='promo code invalid'
             } 
                  
         }
