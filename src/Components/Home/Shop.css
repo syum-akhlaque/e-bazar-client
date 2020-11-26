@@ -31,3 +31,11 @@
 .card:hover .overlay {
     opacity: 1;  
   }
+
+  
+@media screen and (min-width: 1200px) {
+    .card img, .card {
+        min-width: 190px;
+        min-height: 190px;
+    }
+}

@@ -73,16 +73,16 @@ const AllOrder = () => {
 
         <div className="row row-cols-md-5">
            <div className="p-3">
-                <div onClick={()=>handleOrderListByStatus('')} className="col pb-5 pt-2 pr-5" id='all'>All</div>
+                <div onClick={()=>handleOrderListByStatus('')} className="col pb-5 pt-2 pr-5 br-8px" role="button" id='all'>All</div>
             </div>
             <div className="p-3" >
-                <div onClick={()=>handleOrderListByStatus('pending')} className="col pb-5 pt-2 pr-5" id='pending'>Pending</div>
+                <div onClick={()=>handleOrderListByStatus('pending')} className="col pb-5 pt-2 pr-5 br-8px" role="button" id='pending'>Pending</div>
             </div>
             <div className="p-3" >
-                <div onClick={()=>handleOrderListByStatus('confirm')} className="col pb-5 pt-2 pr-5" id='confirm'>Confirmed</div>
+                <div onClick={()=>handleOrderListByStatus('confirm')} className="col pb-5 pt-2 pr-5 br-8px" role="button" id='confirm'>Confirmed</div>
             </div>
             <div className="p-3">
-                <div onClick={()=>handleOrderListByStatus('cencel')} className="col pb-5 pt-2 pr-5" id='cencel'>Cancelled</div>
+                <div onClick={()=>handleOrderListByStatus('cencel')} className="col pb-5 pt-2 pr-5 br-8px" role="button" id='cencel'>Cancelled</div>
             </div>
         </div>
 

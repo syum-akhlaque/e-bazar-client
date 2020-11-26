@@ -2,8 +2,9 @@ import React from 'react';
 import '../Admin.css'
 
 const PromoCodesTr = (props) => {
-    const { _id,activeStatus,promoCodes,startDate,endDate,discountRate, useTime} = props.orders;
-    const handleUpdatePromoCode = props.handleUpdatePromoCode
+    const { _id,activeStatus,promoCodes,startDate,endDate,discountRate, useTime,fullStartDate} = props.orders;
+    const handleUpdatePromoCode = props.handleUpdatePromoCode;
+    const startTime = new Date(fullStartDate).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3") 
   
     return (
         <>
@@ -20,7 +21,7 @@ const PromoCodesTr = (props) => {
        </tr>
        
        <tr className='bg-white p-5' >
-            <td>Create Date: 12:00 pm,{startDate}</td>
+            <td>Create Date: {startTime} , {startDate}</td>
             <td>useage {useTime}</td>
             <td>Discount Rate {discountRate}%</td>
             <td>Start Date: {startDate}</td>

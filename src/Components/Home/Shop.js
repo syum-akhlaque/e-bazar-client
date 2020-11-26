@@ -9,7 +9,6 @@ const Shop = () => {
    const [search] = useContext(SearchContext);
    useEffect(() => {
        
-    // fetch('http://localhost:5000/allProductsBySearch?search='+search)   
    fetch('https://gentle-crag-19557.herokuapp.com/allProductsBySearch?search='+search) 
         .then(response => response.json())
         .then(data => setProducts(data)); 
@@ -22,7 +21,6 @@ const Shop = () => {
       items.quantity=1; //set default quantity 1
       const newCart = [...cart,items]
       setCart(newCart);
-      console.log(newCart);
      }
    }
    

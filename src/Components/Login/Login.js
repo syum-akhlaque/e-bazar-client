@@ -1,14 +1,15 @@
 import React from 'react';
 import { useContext } from 'react';
 import { useForm } from "react-hook-form";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { userContext } from '../../App';
 
 
 const Login = () => {
     const { register, handleSubmit, errors } = useForm();
-    const [loggedInUser, setLoggedInUser] = useContext(userContext)
-    const history = useHistory()
+    const [loggedInUser,setLoggedInUser] = useContext(userContext)
+    const history = useHistory();
+    const location = useLocation();
 
     const onSubmit = (data,e) => {
         e.preventDefault();
@@ -19,10 +20,10 @@ const Login = () => {
                 password: data.password
             }
             setLoggedInUser(newUSer)
-            console.log(loggedInUser)
             alert("sign up successfull")
             history.push({
                 pathname: '/cart',
+                state: location.state,
               })
     }
     return (

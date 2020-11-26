@@ -29,12 +29,7 @@ const UpdatePromoCodes = (props) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatablePromoData)
           }
-        fetch('https://gentle-crag-19557.herokuapp.com/updatePromoCodes',updateOptions)  
-        .then(
-            // fetch('https://gentle-crag-19557.herokuapp.com/orderByStatus?status='+status) // 
-            // .then(response => response.json())
-            // .then(data =>  setAllOrders(data))
-        )  
+        fetch('https://gentle-crag-19557.herokuapp.com/updatePromoCodes',updateOptions)   
         alert("Successfully updated");
         document.getElementById('updatePromoCodes').style.display='none';
         document.getElementById('promoCodeTable').style.display='block'

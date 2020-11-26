@@ -10,7 +10,7 @@ const NavigationBar = () => {
     const [cart] = useContext(cartContext);
     const location = useLocation();
     const currentPath = location.pathname;
-    const [search, setSearch] = useContext(SearchContext)
+    const [search,setSearch] = useContext(SearchContext)
     const handleSearch = (data)=>{
         setSearch(data)
     }
@@ -30,7 +30,7 @@ const NavigationBar = () => {
 
                         <div className='d-flex'>
                             <li className='mx-4'><FontAwesomeIcon icon={faShoppingCart} /> <Link to='/cart' className='bg-warning'> Cart</Link> {cart.length}</li>
-                            <li ><FontAwesomeIcon icon={faUser} /></li>
+                            <li ><Link to='/dashboard'><FontAwesomeIcon icon={faUser}/></Link></li>
                         </div>
                      </>
                 }

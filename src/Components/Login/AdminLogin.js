@@ -6,9 +6,7 @@ import { adminContext } from '../../App';
 
 const AdminLogin = () => {
     const { register, handleSubmit, errors } = useForm();
-    const [loggedInAdmin, setLoggedInAdmin] = useContext(adminContext)
-    console.log('loggedInAdmin')
-    console.log(loggedInAdmin)
+    const [loggedInUser,setLoggedInAdmin] = useContext(adminContext)
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/dashboard" } };

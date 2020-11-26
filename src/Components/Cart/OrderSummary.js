@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { cartContext, userContext } from '../../App';
 // import promocodes from '../FakeData/Promocodes';
 
@@ -8,6 +8,8 @@ const OrderSummary = () => {
     const { register, handleSubmit } = useForm();
     const [cart] = useContext(cartContext);
     const [loggedInUser] = useContext(userContext)
+    let location = useLocation();
+    let catchPromo = location.state || '';
     const history = useHistory()
     //----------------calculate cart price
     let subTotal = 0;
@@ -48,12 +50,24 @@ const OrderSummary = () => {
                 const startDate = new Date(chackValidCode.fullStartDate)
                 const endDate = new Date(chackValidCode.fullEndDate)
 
-                if(endDate>currentDate && startDate<currentDate){
+                if(endDate>currentDate && startDate<currentDate && chackValidCode.useTime>=1){
                     const discountPercentage = parseInt(chackValidCode.discountRate);
                     discount = subTotal*discountPercentage/100
                     setDiscount(discount);
                     e.target.reset();
                     document.getElementById('promoError').innerHTML='' // remove error message
+                    //then update promocode use time
+                    const updatablePromoData = { 
+                        id : chackValidCode._id,
+                        useTime: parseInt(chackValidCode.useTime)-1,
+                        }
+                    const updateOptions = {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(updatablePromoData)
+                      }
+                    fetch('https://gentle-crag-19557.herokuapp.com/updatePromoCodesUseTime',updateOptions) 
+                    
                  }
                  else if(startDate>currentDate){
                     document.getElementById('promoError').innerHTML='promo code will available soon, please wait'
@@ -70,6 +84,7 @@ const OrderSummary = () => {
         else{
             history.push({
                 pathname: '/login',
+                state: data.code
             })
         }
     }
@@ -95,7 +110,7 @@ const OrderSummary = () => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="d-flex form-group mt-2">
-                    <input name="code" placeholder='Type your code' ref={register({ required: false })} />      
+                    <input name="code" placeholder='Type your code' defaultValue={catchPromo} ref={register({ required: false })} />      
                     <button className="btn  bg-light" type='submit' >Apply</button> 
                 </div>    
                 <small id='promoError' className='text-danger'></small>   
@@ -107,9 +122,9 @@ const OrderSummary = () => {
 
             <div className='mt-5 p-3 bg-light text-danger'>
               <p>NOTE: <br/>
-                # please add promocode before checkout: FREE10,FREE20 <br/>
+                # please add promocode before checkout: FREE10, FREE20 <br/>
                 # Use promo code again if you dont see discount added <br/>
-               # Please use promocode if you change something from cart <br/>
+               # Please use promocode again if you change something from cart <br/>
                </p>
            </div>
         </div>

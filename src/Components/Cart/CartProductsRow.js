@@ -31,13 +31,13 @@ const CartProductsRow = (props) => {
             <p>.</p>
     <p id='quantity'>Quantity: &nbsp;
       <span className="bg-light px-2">
-         <FontAwesomeIcon onClick={(event)=>handleCartQuantity('increase',_id)} icon={faPlus} /> &nbsp;
+         <FontAwesomeIcon role="button" onClick={(event)=>handleCartQuantity('increase',_id)} icon={faPlus} /> &nbsp;
          <b>{quantity}</b> &nbsp;
-        <FontAwesomeIcon onClick={(event)=>handleCartQuantity('decrease',_id)} icon={faMinus}/></span> <br/>
+        <FontAwesomeIcon role="button" onClick={(event)=>handleCartQuantity('decrease',_id)} icon={faMinus}/></span> <br/>
        Total Price: BDT. {titalPrice}</p>
         </td> 
         <td>                       
-            <FontAwesomeIcon onClick={()=>handleRemoveCartItem(_id)} icon={faTrash} />
+            <FontAwesomeIcon role="button" onClick={()=>handleRemoveCartItem(_id)} icon={faTrash} />
         </td>  
     </tr>
     );
